@@ -9,7 +9,12 @@ import com.nelioalves.cursomc.domain.Categoria;
 //esse é o objeto de camada de acesso a dados referênte ao objeto (Categoria)
 @Repository
 public interface CategoriaRepository extends JpaRepository<Categoria, Integer>{
+
+
+
+
 	
+
 	
 	
 
