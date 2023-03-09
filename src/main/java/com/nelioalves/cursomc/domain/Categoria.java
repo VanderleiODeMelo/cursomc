@@ -1,15 +1,24 @@
 package com.nelioalves.cursomc.domain;
 import java.io.Serializable;
 import java.util.Objects;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 //o serializable os objetos podem ser convertidos para uma
 //sequencia de bytes para que o objeto possa ser gravados em
 //arquivos para trafegar em rede e assim por diante
 //obs:Quando a classe implementa o serializable ela tem que ter um
 //numero de versão padrão que seria o número (1) a minha classe é a versão 1L dela
+
+@Entity
 public class Categoria implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue(strategy =GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 	
