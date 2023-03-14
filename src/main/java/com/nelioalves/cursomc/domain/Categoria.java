@@ -1,11 +1,14 @@
 package com.nelioalves.cursomc.domain;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 //o serializable os objetos podem ser convertidos para uma
 //sequencia de bytes para que o objeto possa ser gravados em
 //arquivos para trafegar em rede e assim por diante
@@ -21,6 +24,9 @@ public class Categoria implements Serializable{
 	@GeneratedValue(strategy =GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
+	
+	@ManyToMany(mappedBy = "categorias")
+	private List<Produto> produtos = new ArrayList<Produto>();
 	
 	public Categoria(Integer id, String nome) {
 		super();
@@ -44,6 +50,13 @@ public class Categoria implements Serializable{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	public List<Produto> getProdutos() {
+		return produtos;
+	}
+
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
+	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -59,4 +72,6 @@ public class Categoria implements Serializable{
 		Categoria other = (Categoria) obj;
 		return Objects.equals(id, other.id);
 	}
+
+
 }
